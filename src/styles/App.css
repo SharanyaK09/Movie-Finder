@@ -1,0 +1,243 @@
+/* ============ THEME VARIABLES ============ */
+:root {
+  --accent-1: #ff4da6;
+  --accent-2: #7c3aed;
+  --accent-3: #38bdf8;
+  --radius: 18px;
+}
+
+.dark-mode {
+  --bg: #0a0a14;
+  --bg-elev: rgba(255, 255, 255, 0.04);
+  --bg-elev-2: rgba(255, 255, 255, 0.07);
+  --border: rgba(255, 255, 255, 0.08);
+  --text: #f4f4f7;
+  --text-muted: #9a9aab;
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.light-mode {
+  --bg: #f3f4fb;
+  --bg-elev: rgba(255, 255, 255, 0.75);
+  --bg-elev-2: rgba(255, 255, 255, 0.95);
+  --border: rgba(20, 20, 40, 0.08);
+  --text: #1a1a2e;
+  --text-muted: #6b6b85;
+  --shadow: 0 8px 32px rgba(60, 60, 120, 0.12);
+}
+
+/* ============ BASE ============ */
+body {
+  margin: 0;
+  font-family: 'Poppins', 'Outfit', sans-serif;
+}
+
+h1, h2, h3 {
+  margin: 0;
+  padding: 0;
+}
+
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.4s ease, color 0.4s ease;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Ambient gradient glow background */
+.app-container::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 15% 10%, rgba(255, 77, 166, 0.18), transparent 40%),
+    radial-gradient(circle at 85% 0%, rgba(124, 58, 237, 0.18), transparent 45%),
+    radial-gradient(circle at 50% 90%, rgba(56, 189, 248, 0.12), transparent 45%);
+  transition: opacity 0.4s ease;
+}
+
+.light-mode.app-container::before {
+  opacity: 0.6;
+}
+
+main, .app-content {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  width: 100%;
+}
+
+/* ============ THEME TOGGLE ============ */
+.theme-toggle-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 14px 0 4px;
+  position: relative;
+  z-index: 2;
+}
+
+.theme-toggle {
+  padding: 10px 22px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  cursor: pointer;
+  background: var(--bg-elev);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  color: var(--text);
+  font-weight: 600;
+  font-size: 14px;
+  font-family: inherit;
+  transition: all 0.25s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: var(--shadow);
+}
+
+.theme-toggle:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent-1);
+}
+
+/* ============ HERO ============ */
+.hero {
+  text-align: center;
+  padding: 48px 20px 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero h1 {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  font-size: clamp(2rem, 6vw, 3.4rem);
+  letter-spacing: -1px;
+  background: linear-gradient(110deg, var(--accent-1), var(--accent-2) 50%, var(--accent-3));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  color: var(--text-muted);
+  font-size: clamp(0.9rem, 2.5vw, 1.05rem);
+  margin: 0 auto;
+  max-width: 480px;
+  font-weight: 400;
+}
+
+/* ============ RECENT SEARCHES ============ */
+.recent-searches {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  justify-content: center;
+  max-width: 700px;
+  margin: 14px auto 0;
+  padding: 0 16px;
+  font-size: 12px;
+  color: var(--text-muted);
+  position: relative;
+  z-index: 2;
+}
+
+.recent-chip {
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--bg-elev);
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.recent-chip:hover {
+  border-color: var(--accent-1);
+}
+
+/* ============ MOVIES CONTAINER ============ */
+.movies-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 22px;
+  padding: 24px clamp(16px, 4vw, 48px) 64px;
+  position: relative;
+  z-index: 1;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+@media (max-width: 480px) {
+  .movies-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    padding: 16px 14px 48px;
+  }
+}
+
+/* ============ EMPTY / STATUS STATES ============ */
+.status-message {
+  text-align: center;
+  grid-column: 1 / -1;
+  color: var(--text-muted);
+  padding: 60px 20px;
+  font-size: 1.05rem;
+}
+
+.status-message .status-emoji {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 14px;
+}
+
+/* ============ FOOTER ============ */
+.app-footer {
+  text-align: center;
+  padding: 22px 16px;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  border-top: 1px solid var(--border);
+  position: relative;
+  z-index: 1;
+}
+
+.app-footer span {
+  background: linear-gradient(110deg, var(--accent-1), var(--accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 700;
+}
+
+/* ============ MISC ANIMATIONS ============ */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.spinner {
+  width: 38px;
+  height: 38px;
+  border: 3px solid var(--border);
+  border-top-color: var(--accent-1);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 60px auto;
+  grid-column: 1 / -1;
+}

@@ -1,0 +1,234 @@
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 5, 12, 0.7);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 16px;
+  animation: fadeIn 0.25s ease both;
+}
+
+.modal-content {
+  background: var(--bg-elev-2);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  max-width: 880px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  padding: 28px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  color: var(--text);
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  color: var(--text);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 16px;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.2s ease;
+}
+
+.modal-close:hover {
+  background: linear-gradient(110deg, var(--accent-1), var(--accent-2));
+  color: #fff;
+  border-color: transparent;
+}
+
+.modal-header {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.modal-poster {
+  width: 180px;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  border-radius: 14px;
+  flex-shrink: 0;
+  box-shadow: var(--shadow);
+}
+
+.modal-header-info {
+  flex: 1;
+  min-width: 220px;
+}
+
+.modal-header-info h2 {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(1.4rem, 4vw, 2rem);
+  margin-bottom: 6px;
+  background: linear-gradient(110deg, var(--accent-1), var(--accent-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.modal-meta {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin: 0 0 10px;
+}
+
+.genre-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.genre-tag {
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.modal-overview {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+
+.modal-fav-btn {
+  display: inline-block;
+  width: auto;
+  padding: 10px 22px;
+}
+
+.modal-section {
+  margin-top: 28px;
+  border-top: 1px solid var(--border);
+  padding-top: 20px;
+}
+
+.modal-section h3 {
+  font-size: 16px;
+  margin-bottom: 14px;
+}
+
+.trailer-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.trailer-wrap iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.cast-row {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  padding-bottom: 6px;
+}
+
+.cast-item {
+  flex-shrink: 0;
+  width: 100px;
+  text-align: center;
+}
+
+.cast-photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--bg-elev);
+  margin-bottom: 6px;
+}
+
+.cast-name {
+  font-size: 12px;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.cast-character {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin: 2px 0 0;
+}
+
+.watch-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin: 0 0 8px;
+}
+
+.watch-info {
+  font-size: 14px;
+  color: var(--text);
+}
+
+.watch-info a {
+  color: var(--accent-1);
+  font-weight: 600;
+}
+
+.provider-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.provider-row img {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  transition: transform 0.2s ease;
+}
+
+.provider-row img:hover {
+  transform: scale(1.08);
+}
+
+.bookmyshow-btn {
+  display: inline-block;
+  padding: 12px 26px;
+  background: linear-gradient(110deg, var(--accent-1), var(--accent-2));
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  border-radius: 999px;
+  text-decoration: none;
+  box-shadow: 0 6px 18px rgba(255, 77, 166, 0.35);
+  transition: transform 0.2s ease;
+}
+
+.bookmyshow-btn:hover {
+  transform: translateY(-2px) scale(1.03);
+}
+
+@media (max-width: 540px) {
+  .modal-content { padding: 18px; border-radius: 16px; }
+  .modal-header { flex-direction: column; align-items: center; text-align: center; }
+  .modal-poster { width: 160px; }
+  .genre-tags, .modal-overview { justify-content: center; }
+  .cast-row { justify-content: flex-start; }
+}
